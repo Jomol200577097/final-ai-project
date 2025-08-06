@@ -279,7 +279,8 @@ elif tab == "Mood Chart":
             pivot = calendar_df.pivot_table(index='weekday', columns='day', values='mood')
             fig, ax = plt.subplots(figsize=(10, 3))
             sns.heatmap(pivot, cmap="coolwarm", linewidths=0.5, linecolor='gray', ax=ax, cbar=True)
-            ax.set_yticklabels([calendar.day_name[i] for i in range(7)], rotation=0)
+            yticks = pivot.index.tolist()
+            ax.set_yticklabels([calendar.day_name[i] for i in yticks], rotation=0)
             ax.set_title("Mood Heatmap for Current Month")
             st.pyplot(fig)
         else:
